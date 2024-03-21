@@ -1,0 +1,80 @@
+----------------------------- Arrow Functions: -------------------------------------
+
+Las arrow functions, o funciones de flecha, son una característica introducida en ECMAScript 6 (también conocido como ES2015) que proporciona una sintaxis más concisa y simple para definir funciones en JavaScript. La sintaxis básica de una arrow function es la siguiente:
+
+EJEMPLO: 
+// Arrow function con dos parámetros numéricos
+const sum = (num1, num2) => {
+  return num1 + num2;
+};
+// Llamar a la función sum() con números como argumentos
+const resultado = sum(5, 3);
+
+// Mostrar el resultado en la consola
+console.log(resultado);
+
+Las arrow functions tienen las siguientes características:
+
+- Se definen utilizando una sintaxis más corta y concisa que las funciones tradicionales.
+- No tienen su propio this, arguments, super, o new.target. En su lugar, estos valores se toman del contexto circundante en el que se definen la función.
+- Son especialmente útiles para funciones anónimas y funciones de una sola línea.
+- Se utilizan comúnmente en expresiones de funciones de retorno, métodos de array como map, filter, reduce, entre otros.
+
+EJEMPLO:
+
+----------------------------- // Arrow function con un parámetro--------------------------------------
+const square = (num) => {
+  return num * num;
+};
+
+// Llamar a la función square() con un número como argumento
+const resultado = square(4);
+
+// Mostrar el resultado en la consola
+console.log(resultado);
+
+---------------------------------------// Arrow function sin parámetros------------------------------------------
+const greet = () => {
+    return 'LABORATORIO 3 "Arrow function" ';
+  };
+  // Mostrar el resultado en la consola
+   console.log(greet());
+
+
+-----------------------------------------------// Arrow function de una sola línea-----------------------------------
+const double = (num) => num * 2;
+
+// Llamar a la función double() con un número como argumento
+const resultado = double(5);
+
+// Mostrar el resultado en la consola
+console.log(resultado);
+
+------------------------------------------// Arrow function con múltiples parámetros---------------------------------------
+const rest = (a, b) => {
+    return a - b;
+  };
+  
+  // Llamar a la función rest() con dos números como argumentos
+  const resul3 = rest(7, 5);
+  
+  // Mostrar el resultado en la consola
+  console.log(resul3);
+  console.log(rest(7, 8));
+
+  -------------------------------------------------------// Utilizando arrow functions con métodos de array------------------------------------------
+const numbers = [1, 2, 3, 4, 5, 6];
+
+
+// Utilizando map para calcular el cuadrado de cada número
+const squaredNumbers = numbers.map(num => num * num);
+console.log("Utilizando map: ", squaredNumbers);
+
+// Utilizando filter para obtener los números pares
+const evenNumbers = numbers.filter(num => num % 2 === 0);
+console.log("Utilizando filter: ", evenNumbers); 
+
+
+// Utilizando reduce para calcular la suma de los números
+const sumOfNumbers = numbers.reduce((acu, num) => acu + num, 0);
+console.log("Utilizando reduce: ", sumOfNumbers);

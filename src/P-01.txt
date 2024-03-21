@@ -1,0 +1,75 @@
+-------------------   .gitignore:   ------------------------------
+El archivo .gitignore es utilizado por Git para determinar qué archivos y directorios deben ser ignorados y no ser rastreados por el control de versiones. Esto es útil para excluir archivos generados automáticamente, archivos de configuración local y otros archivos que no son relevantes para el repositorio. 
+EJEMPLO: 
+
+# Ignorar archivos de configuración local
+.vscode/*
+!.vscode/extensions.json
+.idea
+
+# Ignorar archivos compilados
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Ignorar directorios de dependencias
+node_modules
+dist
+dist-ssr
+*.local
+
+# Ignora archivos específicos de macOS
+.DS_Store
+
+#Ignora archivos y carpetas específicos de IDEs y sistemas operativos
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+-------------------  package.json: -------------------------
+Es un archivo de configuración utilizado en proyectos Node.js. Contiene metadatos del proyecto, como nombre, versión, descripción y dependencias del proyecto. Además, puede contener scripts personalizados, comandos de inicio y otros detalles relevantes para la gestión del proyecto.
+EJEMPLO: 
+
+{
+  "name": "lab03", // Nombre del Proyecto
+  "private": true, // Indica que el Proyecto es privado y no será publicado en el registro de paquetes npm.
+  "version": "0.0.0", // Versión inicial del Proyecto.
+  "type": "module", // Tipo de Módulo que el Proyecto utiliza (En este caso, módulos ES).
+  "scripts": {
+    "dev": "vite", // Comando para ejecutar el entorno de desarrollo utilizando vite. 
+    "build": "vite build", // Comando para compilar el Proyecto utilizado Vite.
+    "preview": "vite preview" // Comando para previsualizar el proyecto complilado utilizando Vite.
+  },
+  "devDependencies": {
+    "vite": "^5.1.4" // Dependencia de desarrollo del paquete Vite y su versión específica
+  }
+}
+
+------------------------ Archivo de configuración de Docker (Dockerfile): ---------------------------------
+Es un archivo de texto que contiene los comandos necesarios para construir una imagen de Docker. Estos comandos especifican las capas y configuraciones necesarias para crear un entorno de ejecución específico. 
+EJEMPLO:
+
+# Usar la imagen base de Node.js
+FROM node:14
+
+# Establecer el directorio de trabajo en /app
+WORKDIR /app
+
+# Copiar el archivo package.json e instalar las dependencias
+COPY package*.json ./        # Copia el archivo package.json y cualquier archivo que comience con "package" y tenga la extensión .json al directorio de trabajo
+RUN npm install              # Ejecuta el comando npm install para instalar las dependencias del proyecto
+
+# Copiar el resto de los archivos de la aplicación
+COPY . .                     # Copia todos los archivos y directorios del contexto de construcción al directorio de trabajo /app del contenedor
+
+# Exponer el puerto en el que la aplicación se ejecutará
+EXPOSE 3000                  # Indica que el contenedor escuchará conexiones en el puerto 3000 cuando se ejecute
+
+# Comando para iniciar la aplicación
+CMD ["node", "index.js"]     # Especifica el comando que se ejecutará cuando se inicie el contenedor, en este caso, ejecutará el archivo index.js usando Node.js
